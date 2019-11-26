@@ -1,37 +1,36 @@
-export default class Grid {
+function DrawMethod(ctx, minor, major, stroke, fill) {
+    minor = minor || 10;
+    major = major || minor * 5;
+    stroke = stroke || "#00FF00";
+    fill = fill || "009900";
+    ctx.save();
+    ctx.strokeStyle = stroke;
+    ctx.fillStyle = fill;
+    let width = ctx.canvas.width;
+    let height = ctx.canvas.height;
 
-    constructor(canvas, context) {
-        this.canvas = canvas;
-        this.context = context;
-        this.draw();
+    // Draw X -axises
+    for (let i = 0; i < width; i += minor) {
+        ctx.beginPath();
+        ctx.lineWidth = .5;
+        if (i % major === 0) {
+            ctx.lineWidth = 2;
+        }
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, height);
+        ctx.stroke();
     }
-
-    draw = function () {
-        let context = this.context;
-        let canvas = this.canvas;
-        context.strokeStyle = 'dimgrey';
-        for (let i = 0; i < canvas.width; i += 10) {
-            context.beginPath();
-            context.lineWidth = .5;
-            if (i % 50 === 0) {
-                context.lineWidth = 2;
-            }
-            context.moveTo(i, 0);
-            context.lineTo(i, canvas.height);
-            context.stroke();
+    // Draw Y-axises
+    for (let i = 0; i < height; i += minor) {
+        ctx.beginPath();
+        ctx.lineWidth = .5;
+        ctx.beginPath();
+        if (i % major === 0) {
+            ctx.lineWidth = 2;
         }
-        // Draw Y-axises
-        for (let i = 0; i < canvas.height; i += 10) {
-            context.lineWidth = .5;
-            context.beginPath();
-            if (i % 50 === 0) {
-                context.lineWidth = 2;
-            }
-            context.moveTo(0, i);
-            context.lineTo(canvas.width, i);
-            context.stroke();
-        }
-        context.stroke();
-    };
-
+        ctx.moveTo(0, i);
+        ctx.lineTo(width, i);
+        ctx.stroke();
+    }
+    ctx.restore();
 }

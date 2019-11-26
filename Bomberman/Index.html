@@ -14,29 +14,7 @@
     let canvas = document.getElementById("asteroids");
     let context = canvas.getContext("2d");
 
-    context.strokeStyle = 'dimgrey';
-    // Draw X -axises
-    for (let i = 0; i < canvas.width; i += 10) {
-        context.beginPath();
-        context.lineWidth = .5;
-        if (i % 50 === 0) {
-            context.lineWidth = 2;
-        }
-        context.moveTo(i, 0);
-        context.lineTo(i, canvas.height);
-        context.stroke();
-    }
-    // Draw Y-axises
-    for (let i = 0; i < canvas.height; i += 10) {
-        context.lineWidth = .5;
-        context.beginPath();
-        if (i % 50 === 0) {
-            context.lineWidth = 2;
-        }
-        context.moveTo(0, i);
-        context.lineTo(canvas.width, i);
-        context.stroke();
-    }
+    DrawMethod(context);
     context.stroke();
 </script>
 </body>
