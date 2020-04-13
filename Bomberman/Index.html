@@ -8,13 +8,24 @@
 </head>
 <body>
 <h1>Welcome to Bomberman</h1>
-<canvas height="400" id="asteroids" width="600"></canvas>
+<canvas id="screen" height="400" width="600"></canvas>
 <script>
 
-    let canvas = document.getElementById("asteroids");
-    let context = canvas.getContext("2d");
+    let debug = true;
 
-    DrawMethod(context);
+    var canvas = document.getElementById("screen");
+    var context = canvas.getContext("2d");
+
+    let bgReady = false;
+    var bgImage = new Image();
+    bgImage.onload = function (){
+        bgReady = true;
+    }
+    bgImage.src = "./img/grassPane.jpg"
+
+    if(debug == true){
+        DrawGrid(context);
+    }
     context.stroke();
 </script>
 </body>

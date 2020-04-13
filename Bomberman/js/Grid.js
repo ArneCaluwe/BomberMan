@@ -1,4 +1,4 @@
-function DrawMethod(ctx, minor, major, stroke, fill) {
+function DrawGrid(ctx, minor, major, stroke, fill) {
     minor = minor || 10;
     major = major || minor * 5;
     stroke = stroke || "#00FF00";
